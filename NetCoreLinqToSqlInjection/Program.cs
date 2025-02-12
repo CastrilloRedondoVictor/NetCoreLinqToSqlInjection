@@ -1,3 +1,4 @@
+using NetCoreLinqToSqlinjection.Repositories;
 using NetCoreLinqToSqlInjection.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,7 +14,9 @@ coche.Velocidad = 0;
 coche.VelocidadMaxima = 200;
 
 //builder.Services.AddSingleton<ICoche, Deportivo>();
-builder.Services.AddSingleton<ICoche, Coche>(c => coche);
+//builder.Services.AddSingleton<ICoche, Coche>(c => coche);
+
+builder.Services.AddTransient<IRepositoryDoctores, RepositoryDoctoresSQLServer>();
 
 var app = builder.Build();
 
